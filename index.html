@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MountainView Group | Business Consulting & Accounting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Georgia, serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            background: #050505;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: #888;
+            font-weight: normal;
+            display: block;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f4c542;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100%;
+            background: #050505;
+            z-index: 200;
+            padding: 80px 30px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+            border-left: 1px solid #333;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            border-bottom: 1px solid #222;
+        }
+
+        .mobile-menu a:hover {
+            color: #f4c542;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #0a0a0a;
+            padding: 100px 5%;
+            text-align: center;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #f4c542, #e91e63, #8e44ad);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #aaa;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        /* Cards Grid */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            background: #111111;
+            border-radius: 16px;
+            padding: 35px;
+            flex: 1;
+            min-width: 280px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #222;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .card-group {
+            border-bottom: 3px solid white;
+        }
+        .card-group h3, .card-group h4 {
+            color: white;
+        }
+
+        .card-education {
+            border-bottom: 3px solid #f4c542;
+        }
+        .card-education h3, .card-education h4 {
+            color: #f4c542;
+        }
+
+        .card-accounting {
+            border-bottom: 3px solid #2ecc71;
+        }
+        .card-accounting h3, .card-accounting h4 {
+            color: #2ecc71;
+        }
+
+        .card h3 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #333;
+        }
+
+        .btn-group:hover {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        .btn-education:hover {
+            background: #f4c542;
+            color: black;
+            border-color: #f4c542;
+        }
+
+        .btn-accounting:hover {
+            background: #2ecc71;
+            color: black;
+            border-color: #2ecc71;
+        }
+
+        /* Founder Section */
+        .founder {
+            background: #0d0d0d;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            border: 1px solid #1a1a1a;
+        }
+
+        .founder-content {
+            flex: 2;
+        }
+
+        .founder-content h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .founder-content h3 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .founder-content p {
+            color: #aaa;
+        }
+
+        .accent-text {
+            color: #9b59b6;
+        }
+
+        .founder-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .founder-image span {
+            font-size: 80px;
+            background: linear-gradient(135deg, #8e44ad, #e91e63);
+            border-radius: 100%;
+            padding: 30px;
+            display: inline-block;
+        }
+
+        footer {
+            background: #050505;
+            color: #666;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero h1 { font-size: 36px; }
+            .section-title { font-size: 28px; }
+            .founder { padding: 30px; }
+            .logo-text { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-area">
+        <div class="logo">
+            <!-- Replace "logo.png" with your actual logo file name -->
+            <img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🏔️'">
+        </div>
+        <div class="logo-text">MountainView <span>Group</span></div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Our Services</a>
+        <a href="founder.html">Our Founder</a>
+        <a href="terms.html">Ts & Cs</a>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Our Services</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="terms.html">Ts & Cs</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<section class="hero">
+    <h1>Mountain<span>View</span> Group</h1>
+    <p>Business consulting. Accounting support. Accessible education. Building better foundations for South African businesses and students.</p>
+</section>
+
+<div class="container">
+    <h2 class="section-title">Our Divisions</h2>
+    <p class="section-subtitle">One holding company. Three ways we help.</p>
+
+    <div class="card-grid">
+        <div class="card card-group">
+            <h3>🏔️</h3>
+            <h4>MountainView Group</h4>
+            <p>Business consulting services for small, boutique, and medium businesses. Strategy, operations, and growth.</p>
+            <a href="services.html" class="btn btn-group">Learn more →</a>
+        </div>
+        <div class="card card-accounting">
+            <h3>📊</h3>
+            <h4>MountainView Accounting</h4>
+            <p>Bookkeeping and accounting administration support. Clean books, clear numbers, peace of mind.</p>
+            <a href="services.html" class="btn btn-accounting">Learn more →</a>
+        </div>
+        <div class="card card-education">
+            <h3>📚</h3>
+            <h4>MountainView Education</h4>
+            <p>Free accounting study material, notes, and live sessions. Making accounting education accessible to all.</p>
+            <a href="services.html" class="btn btn-education">Learn more →</a>
+        </div>
+    </div>
+
+    <div class="founder">
+        <div class="founder-content">
+            <h2>Founded by <span class="accent-text">Nhlakanipho Nkosi</span></h2>
+            <h3>Bachelor of Accounting Sciences student | Future CA(SA) & CFA</h3>
+            <p>At 19, I started MountainView Group with a simple belief: businesses and students deserve better support. Whether it's helping small businesses run their numbers, or helping students learn accounting for free — I'm building for the long term.</p>
+            <p style="margin-top: 15px;">My focus is investment banking, mergers and acquisitions, and consulting. And increasingly, <span style="color: #e91e63;">financial engineering</span> — which is where my love for code comes in.</p>
+            <a href="founder.html" class="btn" style="margin-top: 20px; border-color: #8e44ad;">Read my story →</a>
+        </div>
+        <div class="founder-image">
+            <span>👨‍🎓</span>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>All rights reserved: MountainView Group 2026</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenuBtn');
+
+    function openMenu() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    function closeMenuFunc() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFunc);
+    overlay.addEventListener('click', closeMenuFunc);
+</script>
+
+</body>
+</html>
