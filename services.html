@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | MountainView Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Georgia, serif;
+            background: #0a0a0a;
+            color: #ddd;
+            line-height: 1.8;
+        }
+        nav {
+            background: #050505;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .logo-text span {
+            font-size: 11px;
+            color: #888;
+            display: block;
+        }
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: #f4c542; }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100%;
+            background: #050505;
+            z-index: 200;
+            padding: 80px 30px;
+            transition: right 0.3s ease;
+            border-left: 1px solid #333;
+        }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+            display: none;
+        }
+        .overlay.active { display: block; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+        h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h1 span { 
+            background: linear-gradient(135deg, #f4c542, #e91e63, #8e44ad);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+        .service-card {
+            background: #111;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .service-icon {
+            font-size: 48px;
+        }
+        .service-title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .service-desc {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+        .service-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .service-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #bbb;
+        }
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #f4c542;
+        }
+        .btn-service {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #333;
+            margin-top: 10px;
+        }
+        .btn-service:hover {
+            background: white;
+            color: black;
+        }
+        /* Division specific colors */
+        .consulting .service-title { color: white; }
+        .consulting .service-list li::before { color: white; }
+        .accounting .service-title { color: #2ecc71; }
+        .accounting .service-list li::before { color: #2ecc71; }
+        .education .service-title { color: #f4c542; }
+        .education .service-list li::before { color: #f4c542; }
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            border-top: 1px solid #1a1a1a;
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            h1 { font-size: 34px; }
+            nav { flex-direction: row; }
+            .service-title { font-size: 26px; }
+            .service-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-area">
+        <div class="logo"><img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🏔️'"></div>
+        <div class="logo-text">MountainView <span>Group</span></div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Our Services</a>
+        <a href="founder.html">Our Founder</a>
+        <a href="terms.html">Ts & Cs</a>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Our Services</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="terms.html">Ts & Cs</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+    <h1>Our <span>Services</span></h1>
+    <p class="section-subtitle">One holding company. Three ways we help.</p>
+
+    <!-- MountainView Group Consulting -->
+    <div class="service-card consulting">
+        <div class="service-header">
+            <div class="service-icon">🏔️</div>
+            <div class="service-title">MountainView Group</div>
+        </div>
+        <div class="service-desc">
+            Business consulting services for small, boutique, and medium businesses. We help you see the full picture and build for the long term.
+        </div>
+        <ul class="service-list">
+            <li>Business strategy and operations review</li>
+            <li>Financial modeling and projections</li>
+            <li>Process improvement and efficiency audits</li>
+            <li>Growth planning and market positioning</li>
+            <li>Merger and acquisition advisory (preparation phase)</li>
+        </ul>
+        <a href="#" class="btn-service">Inquire about consulting →</a>
+    </div>
+
+    <!-- MountainView Accounting -->
+    <div class="service-card accounting">
+        <div class="service-header">
+            <div class="service-icon">📊</div>
+            <div class="service-title">MountainView Accounting</div>
+        </div>
+        <div class="service-desc">
+            Bookkeeping and accounting administration support. Clean books, clear numbers, peace of mind.
+        </div>
+        <ul class="service-list">
+            <li>Daily bookkeeping and transaction recording</li>
+            <li>Bank reconciliations and cash flow tracking</li>
+            <li>Accounts payable and receivable management</li>
+            <li>Management accounts preparation</li>
+            <li>Basic tax compliance support</li>
+        </ul>
+        <a href="#" class="btn-service">Inquire about accounting →</a>
+    </div>
+
+    <!-- MountainView Education -->
+    <div class="service-card education">
+        <div class="service-header">
+            <div class="service-icon">📚</div>
+            <div class="service-title">MountainView Education</div>
+        </div>
+        <div class="service-desc">
+            Free accounting study material, notes, and live sessions. Making accounting education accessible to all.
+        </div>
+        <ul class="service-list">
+            <li>Free downloadable study notes and summaries</li>
+            <li>Live online study sessions and Q&A</li>
+            <li>Video tutorials breaking down complex topics</li>
+            <li>Practice questions and solutions</li>
+            <li>Study tips and exam preparation guides</li>
+        </ul>
+        <a href="#" class="btn-service">Access free resources →</a>
+    </div>
+</div>
+
+<footer>
+    <p>All rights reserved: MountainView Group 2026</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenuBtn');
+
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+    });
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    overlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
+
+</body>
+</html>
