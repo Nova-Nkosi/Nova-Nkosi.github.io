@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | MountainView Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Georgia, serif;
+            background: #0a0a0a;
+            color: #ddd;
+            line-height: 1.7;
+        }
+        nav {
+            background: #050505;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .logo-text span {
+            font-size: 11px;
+            color: #888;
+            display: block;
+        }
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: #f4c542; }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100%;
+            background: #050505;
+            z-index: 200;
+            padding: 80px 30px;
+            transition: right 0.3s ease;
+            border-left: 1px solid #333;
+        }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+            display: none;
+        }
+        .overlay.active { display: block; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        h1 span { 
+            background: linear-gradient(135deg, #f4c542, #e91e63);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .version-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 4px solid #2ecc71;
+        }
+        .version-box p {
+            margin: 5px 0;
+            color: #aaa;
+        }
+        h2 {
+            color: #f4c542;
+            margin: 35px 0 15px;
+            font-size: 26px;
+        }
+        h3 {
+            color: #e91e63;
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #bbb;
+            line-height: 1.7;
+        }
+        .clause {
+            background: #0d0d0d;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #1a1a1a;
+        }
+        .clause-number {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            margin: 10px 0 15px 25px;
+            color: #bbb;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .highlight {
+            color: #f4c542;
+        }
+        .warning {
+            color: #e91e63;
+        }
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            border-top: 1px solid #1a1a1a;
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            h1 { font-size: 34px; }
+            nav { flex-direction: row; }
+            h2 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-area">
+        <div class="logo"><img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🏔️'"></div>
+        <div class="logo-text">MountainView <span>Group</span></div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Our Services</a>
+        <a href="founder.html">Our Founder</a>
+        <a href="terms.html">Ts & Cs</a>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Our Services</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="terms.html">Ts & Cs</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+    <h1>Terms <span>& Conditions</span></h1>
+    <p style="margin-bottom: 5px;">MountainView Accounting</p>
+    <p style="color: #888; margin-bottom: 20px;">Version 1.0 | Effective Date: 12 April 2026</p>
+
+    <div class="version-box">
+        <p><span class="highlight">📧 Trading As:</span> MountainView Accounting</p>
+        <p><span class="highlight">📧 Contact:</span> MountainView.acc@outlook.com | 069 542 5563</p>
+        <p><span class="highlight">📍 Location:</span> JHB | Newcastle</p>
+    </div>
+
+    <!-- 1. ACCEPTANCE OF TERMS AND POLICIES -->
+    <div class="clause">
+        <div class="clause-number">1. ACCEPTANCE OF TERMS AND POLICIES</div>
+        <p>1. These Terms and Conditions (“T&Cs”) apply to all services rendered by MountainView Accounting (“we”, “us”, “our”) to you (“Client”, “you”).</p>
+        <p>2. By instructing us to commence work, completing our Client Intake Form, paying any invoice or deposit, emailing us financial records, or in any other way utilizing our services, you acknowledge that you have read, understood, and unconditionally agree to be bound by: (a) these Terms and Conditions; (b) your signed Engagement Letter; (c) our POPIA Policy; and (d) all other customer-affecting policies we may publish or update from time to time.</p>
+        <p>3. If you do not accept these T&Cs and all related policies in full, you must not use our services.</p>
+        <p>4. We reserve the right to amend these T&Cs. The version published on our website or sent with your invoice is the version that applies. Continued use of services after amendment constitutes acceptance of the new terms.</p>
+    </div>
+
+    <!-- 2. SCOPE OF SERVICES & PROFESSIONAL STATUS -->
+    <div class="clause">
+        <div class="clause-number">2. SCOPE OF SERVICES & PROFESSIONAL STATUS</div>
+        <p>1. We provide bookkeeping, accounting administration, and compliance support services strictly as set out in your Engagement Letter.</p>
+        <p>2. <span class="warning">We are not registered tax practitioners, registered auditors, or tax advisors.</span> We do not provide tax advice, represent clients before SARS, or express any audit or review opinion.</p>
+        <p>3. All submissions to SARS via eFiling remain your legal responsibility. We prepare documents for you to review and submit.</p>
+        <p>4. Where specialist tax advice or SARS representation is required, we will refer you to a registered tax practitioner with your prior written consent. Separate fees apply.</p>
+    </div>
+
+    <!-- 3. CLIENT OBLIGATIONS & WARRANTIES -->
+    <div class="clause">
+        <div class="clause-number">3. CLIENT OBLIGATIONS & WARRANTIES</div>
+        <p>1. You must provide complete, accurate, and timely source documents by the deadlines in your Engagement Letter. Late or missing information may result in SARS penalties for which we are not liable.</p>
+        <p>2. You warrant that you have the legal right to share all information and documents provided to us, and that you have obtained POPIA consent from employees, suppliers, or other third parties where required.</p>
+        <p>3. You are responsible for reviewing and approving all VAT201, EMP201, and other returns before submission, and for retaining source documents for 5 years per the Tax Administration Act.</p>
+        <p>4. You must maintain access to your own SARS eFiling and CIPC profiles.</p>
+    </div>
+
+    <!-- 4. FEES, INVOICING & PAYMENT -->
+    <div class="clause">
+        <div class="clause-number">4. FEES, INVOICING & PAYMENT</div>
+        <p>1. Fees are as per your Engagement Letter or written quotation. All fees exclude VAT unless expressly stated otherwise.</p>
+        <p>2. Invoices are issued on or about the 25th of each month. Payment is due within 7 calendar days of invoice date via EFT to the bank account stated on the invoice.</p>
+        <p>3. Overdue amounts incur interest at <span class="highlight">2% per month, compounded monthly</span>.</p>
+        <p>4. We reserve the right to suspend all services if payment is 14 or more days overdue. Client records and reports will only be released once the account is paid in full.</p>
+        <p>5. Fees increase annually on 1 January by CPI + 2%. We will give 30 days written notice.</p>
+        <p>6. You are liable for all disbursements including CIPC fees, bank charges, and third-party software subscriptions used for your work.</p>
+    </div>
+
+    <!-- 5. LIMITATION OF LIABILITY & INDEMNITY -->
+    <div class="clause">
+        <div class="clause-number">5. LIMITATION OF LIABILITY & INDEMNITY</div>
+        <p>1. Our work is based solely on information and documentation you provide. We do not audit, verify, or warrant the completeness or accuracy thereof.</p>
+        <p>2. <span class="warning">Limitation of Liability:</span> Our total aggregate liability to you for any and all claims, whether in contract, delict, or otherwise, is limited to the total fees paid by you to us in the 3 (three) months immediately preceding the event giving rise to the claim.</p>
+        <p>3. We are not liable for: indirect, consequential, special, or punitive damages; SARS penalties or interest arising from incorrect, incomplete, or late information you provided; losses caused by load shedding, internet downtime, software failure, or any force majeure event; your failure to submit returns timeously via eFiling.</p>
+        <p>4. You hereby indemnify and hold MountainView Accounting harmless against any claim, penalty, damage, or loss arising from your breach of clause 3 or from incorrect/incomplete information supplied by you.</p>
+        <p>5. We maintain Professional Indemnity insurance. A certificate of cover is available on written request.</p>
+    </div>
+
+    <!-- 6. CONFIDENTIALITY & PROTECTION OF PERSONAL INFORMATION -->
+    <div class="clause">
+        <div class="clause-number">6. CONFIDENTIALITY & PROTECTION OF PERSONAL INFORMATION</div>
+        <p>1. Both parties undertake to keep all confidential information secret and secure.</p>
+        <p>2. All processing of personal information is subject to our POPIA Policy, which forms an integral part of these T&Cs. By using our services you confirm acceptance of our POPIA Policy.</p>
+        <p>3. You consent to us storing and processing data on cloud platforms including but not limited to Xero, QuickBooks, Google Drive, and Microsoft 365. You acknowledge some servers may be located outside the Republic of South Africa.</p>
+    </div>
+
+    <!-- 7. INTELLECTUAL PROPERTY & RECORDS -->
+    <div class="clause">
+        <div class="clause-number">7. INTELLECTUAL PROPERTY & RECORDS</div>
+        <p>1. Our working papers, methodologies, templates, and know-how remain our intellectual property.</p>
+        <p>2. All reports, ledgers, and financial statements specifically prepared for you become your property upon full payment of our fees.</p>
+        <p>3. Upon termination and settlement of all amounts due, we will provide electronic copies of your records within 14 days. We are entitled to retain copies for 5 years to comply with legal and professional obligations.</p>
+    </div>
+
+    <!-- 8. DURATION & TERMINATION -->
+    <div class="clause">
+        <div class="clause-number">8. DURATION & TERMINATION</div>
+        <p>1. This agreement commences on the date stated in your Engagement Letter and continues month-to-month thereafter.</p>
+        <p>2. Either party may terminate by giving 30 calendar days' written notice via email.</p>
+        <p>3. We may terminate immediately on written notice if: you breach these T&Cs; fail to pay; provide fraudulent information; or request us to perform any illegal act.</p>
+        <p>4. On termination, all outstanding fees become due and payable immediately. Clauses 5, 6, 7, and 9 survive termination.</p>
+    </div>
+
+    <!-- 9. DISPUTE RESOLUTION & GOVERNING LAW -->
+    <div class="clause">
+        <div class="clause-number">9. DISPUTE RESOLUTION & GOVERNING LAW</div>
+        <p>1. The parties will first attempt to resolve any dispute amicably within 14 days of written notification.</p>
+        <p>2. If unresolved, the dispute will be referred to mediation in your nearest office. If mediation fails, the nearest Magistrates Court will have jurisdiction.</p>
+        <p>3. These T&Cs are governed by the laws of the Republic of South Africa.</p>
+    </div>
+
+    <!-- 10. GENERAL -->
+    <div class="clause">
+        <div class="clause-number">10. GENERAL</div>
+        <p>1. <span class="highlight">Entire Agreement:</span> These T&Cs, together with your Engagement Letter and our POPIA Policy, constitute the entire agreement between us and supersede all prior representations.</p>
+        <p>2. <span class="highlight">Amendments:</span> No amendment is valid unless in writing and signed, except for fee escalations per clause 4.5 and T&C updates per clause 1.4.</p>
+        <p>3. <span class="highlight">Severability:</span> If any provision is found unenforceable, the remaining provisions remain in full force.</p>
+        <p>4. <span class="highlight">Non-Solicitation:</span> You may not directly employ or contract any of our staff or subcontractors for 12 months after termination without our written consent.</p>
+        <p>5. <span class="highlight">Domicilium:</span> The parties choose the email addresses in the Engagement Letter as their addresses for service of all notices and legal process.</p>
+        <p>6. <span class="highlight">Marketing:</span> We will only send marketing communication with your opt-in consent. You may unsubscribe at any time by emailing “UNSUBSCRIBE” to MountainView.acc@outlook.com.</p>
+    </div>
+
+    <!-- FINAL ACKNOWLEDGEMENT -->
+    <div class="clause" style="border-left: 4px solid #e91e63;">
+        <div class="clause-number">FINAL ACKNOWLEDGEMENT</div>
+        <p>By utilizing the services of MountainView Accounting in any manner whatsoever, you confirm that you accept these Terms and Conditions and all other customer-affecting policies referenced herein, including our POPIA Policy and Engagement Letter.</p>
+    </div>
+</div>
+
+<footer>
+    <p>All rights reserved: MountainView Group 2026</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenuBtn');
+
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+    });
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    overlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
+
+</body>
+</html>
