@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPIA Policy | MountainView Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Georgia, serif;
+            background: #0a0a0a;
+            color: #ddd;
+            line-height: 1.7;
+        }
+        nav {
+            background: #050505;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .logo-text span {
+            font-size: 11px;
+            color: #888;
+            display: block;
+        }
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav-links a:hover { color: #f4c542; }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100%;
+            background: #050505;
+            z-index: 200;
+            padding: 80px 30px;
+            transition: right 0.3s ease;
+            border-left: 1px solid #333;
+        }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+            display: none;
+        }
+        .overlay.active { display: block; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        h1 span { 
+            background: linear-gradient(135deg, #f4c542, #e91e63);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .version-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 4px solid #9b59b6;
+        }
+        .version-box p {
+            margin: 5px 0;
+            color: #aaa;
+        }
+        h2 {
+            color: #f4c542;
+            margin: 35px 0 15px;
+            font-size: 26px;
+        }
+        h3 {
+            color: #e91e63;
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #bbb;
+            line-height: 1.7;
+        }
+        .clause {
+            background: #0d0d0d;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #1a1a1a;
+        }
+        .clause-number {
+            color: #9b59b6;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #1a1a1a;
+            color: #f4c542;
+        }
+        td {
+            color: #bbb;
+        }
+        ul, ol {
+            margin: 10px 0 15px 25px;
+            color: #bbb;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .highlight {
+            color: #f4c542;
+        }
+        .warning {
+            color: #e91e63;
+        }
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            border-top: 1px solid #1a1a1a;
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            h1 { font-size: 34px; }
+            nav { flex-direction: row; }
+            h2 { font-size: 22px; }
+            table, th, td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-area">
+        <div class="logo"><img src="logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🏔️'"></div>
+        <div class="logo-text">MountainView <span>Group</span></div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Our Services</a>
+        <a href="founder.html">Our Founder</a>
+        <a href="terms.html">Ts & Cs</a>
+        <a href="popia.html">POPIA</a>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn">✕</div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Our Services</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="terms.html">Ts & Cs</a>
+    <a href="popia.html">POPIA</a>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+    <h1>Protection of <span>Personal Information</span></h1>
+    <p style="margin-bottom: 5px;">POPIA Policy</p>
+    <p style="color: #888; margin-bottom: 20px;">Last Updated: April 2026</p>
+
+    <div class="version-box">
+        <p><span class="highlight">📧 Information Officer:</span> Remolebogile Maseko</p>
+        <p><span class="highlight">📧 Contact:</span> MountainView.acc@outlook.com</p>
+        <p><span class="highlight">📍 Address:</span> JHB | Newcastle (RSA)</p>
+    </div>
+
+    <!-- 1. INTRODUCTION & PURPOSE -->
+    <div class="clause">
+        <div class="clause-number">1. INTRODUCTION & PURPOSE</div>
+        <p>MountainView Accounting (“we”, “us”, “our”) is committed to protecting your privacy and personal information. This POPIA Policy explains how we collect, use, store, and share personal information in line with the Protection of Personal Information Act 4 of 2013 (“POPIA”).</p>
+        <p>We provide bookkeeping and accounting support. To do this, we must process personal information belonging to you, your employees, suppliers, and customers. This policy applies to all data subjects we interact with.</p>
+    </div>
+
+    <!-- 2. WHAT PERSONAL INFORMATION WE COLLECT -->
+    <div class="clause">
+        <div class="clause-number">2. WHAT PERSONAL INFORMATION WE COLLECT</div>
+        <p>We only collect information needed to provide our services:</p>
+        <table>
+            <thead>
+                <tr><th>Data Subject</th><th>Information collected</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Clients (you)</td><td>Name, ID Number, Addresses, Email, Cell, Business Registration Documents, Tax Numbers, Bank Details, eFiling login</td></tr>
+                <tr><td>Your Employees</td><td>Name, ID Number, Addresses, Bank details, Salaries, Tax numbers, IRP5 data for PAYE/UIF/SDL</td></tr>
+                <tr><td>Your Suppliers/customers</td><td>Names, Contact Details, VAT Numbers, Invoices, Payment History</td></tr>
+                <tr><td>Website/Form users</td><td>Name, Email, Phone, IP Addresses from google forms</td></tr>
+            </tbody>
+        </table>
+        <p><span class="highlight">Special Personal Information:</span> We may process ID Numbers, tax numbers, and financial info. We do not process race, religion, health, or biometric data unless legally required by SARS.</p>
+    </div>
+
+    <!-- 3. WHY WE COLLECT & PROCESS YOUR INFORMATION -->
+    <div class="clause">
+        <div class="clause-number">3. WHY WE COLLECT & PROCESS YOUR INFORMATION</div>
+        <p>We process personal information only for these lawful purposes:</p>
+        <ul>
+            <li><span class="highlight">Provide contracted services:</span> Bookkeeping, PAYE/VAT prep, management accounts, CIPC filings</li>
+            <li><span class="highlight">Legal obligations:</span> Comply with Tax Administration Act, Companies Act, FICA</li>
+            <li><span class="highlight">Legitimate business interest:</span> Invoicing, client communication, debt collection, quality control</li>
+            <li><span class="highlight">With consent:</span> Marketing our services. You can opt out anytime</li>
+        </ul>
+        <p>We do not sell your information or use it for unrelated purposes.</p>
+    </div>
+
+    <!-- 4. CONSENT -->
+    <div class="clause">
+        <div class="clause-number">4. CONSENT</div>
+        <p>1. By signing our engagement letter and/or submitting our Client Intake Form, you consent to us processing personal information as set out in this policy.</p>
+        <p>2. Where we process employee/supplier info, you confirm you have their consent or another lawful basis to share it with us.</p>
+        <p>3. You may withdraw consent for marketing anytime by emailing MountainView.acc@outlook.com. Withdrawal does not affect processing needed for contracts or legal compliance.</p>
+    </div>
+
+    <!-- 5. HOW WE COLLECT INFORMATION -->
+    <div class="clause">
+        <div class="clause-number">5. HOW WE COLLECT INFORMATION</div>
+        <ul>
+            <li><span class="highlight">Directly from you:</span> Engagement letter, intake form, email, WhatsApp, shared folders</li>
+            <li><span class="highlight">From your records:</span> Bank statements, payroll reports, invoices you upload to [Xero/Google Drive/Dropbox]</li>
+            <li><span class="highlight">From third parties:</span> CIPC, SARS eFiling only with your login or written instruction</li>
+        </ul>
+    </div>
+
+    <!-- 6. SHARING & DISCLOSURE -->
+    <div class="clause">
+        <div class="clause-number">6. SHARING & DISCLOSURE</div>
+        <p>We do not share your info except:</p>
+        <table>
+            <thead><tr><th>Recipient</th><th>Reason</th><th>Safeguards</th></tr></thead>
+            <tbody>
+                <tr><td>SARS</td><td>Submit returns you instruct us to prepare</td><td>Via eFiling using your login. We do not have practitioner access</td></tr>
+                <tr><td>CIPC</td><td>File annual returns, company updates</td><td>Via CIPC portal with your consent</td></tr>
+                <tr><td>Software Providers</td><td>Xero, QuickBooks, Google Drive, Microsoft</td><td>POPIA-compliant operators. Data hosted in SA/EU where possible</td></tr>
+                <tr><td>Registered Tax Practitioner</td><td>Complex tax queries, with your consent</td><td>Confidentiality agreement in place</td></tr>
+                <tr><td>Law Enforcement</td><td>Court order or subpoena only</td><td>As legally required</td></tr>
+                <tr><td>Our insurers/attorneys</td><td>Defend a claim or legal matter</td><td>Confidentiality applies</td></tr>
+            </tbody>
+        </table>
+        <p>We never share info for marketing by other companies.</p>
+    </div>
+
+    <!-- 7. INFORMATION SECURITY -->
+    <div class="clause">
+        <div class="clause-number">7. INFORMATION SECURITY</div>
+        <p>We take reasonable steps to prevent loss, damage, or unlawful access:</p>
+        <ul>
+            <li><span class="highlight">Digital:</span> 2FA on all accounts, strong passwords, encrypted laptops, reputable cloud software only. No client data on USB drives</li>
+            <li><span class="highlight">Physical:</span> Paper records locked away. Shredded after scanning</li>
+            <li><span class="highlight">Access control:</span> Only selected MountainView personnel + authorised contractors access data. All sign confidentiality agreements</li>
+            <li><span class="highlight">Backups:</span> Daily cloud backups of accounting data</li>
+            <li><span class="highlight">Email:</span> Sensitive docs sent via password-protected PDF or secure link, not plain email</li>
+        </ul>
+        <p>Despite safeguards, no system is 100% secure. See clause 9 for breaches.</p>
+    </div>
+
+    <!-- 8. RETENTION & DESTRUCTION -->
+    <div class="clause">
+        <div class="clause-number">8. RETENTION & DESTRUCTION</div>
+        <table>
+            <thead><tr><th>Record Type</th><th>Retention Period</th><th>Reason</th></tr></thead>
+            <tbody>
+                <tr><td>SARS records</td><td>5 years from submission</td><td>Tax Administration Act s29</td></tr>
+                <tr><td>Company records</td><td>7 years</td><td>Companies Act</td></tr>
+                <tr><td>Engagement letters</td><td>5 years after termination</td><td>Prescription Act</td></tr>
+                <tr><td>Marketing opt-in</td><td>Until you opt-out</td><td>POPI Act</td></tr>
+                <tr><td>Failed client quotes</td><td>1 year</td><td>Business reference</td></tr>
+            </tbody>
+        </table>
+        <p>After periods expire, we delete/destroy securely. You may request earlier deletion unless law requires retention.</p>
+    </div>
+
+    <!-- 9. DATA BREACH PROCEDURE -->
+    <div class="clause">
+        <div class="clause-number">9. DATA BREACH PROCEDURE</div>
+        <p>If we become aware of a breach compromising your personal info:</p>
+        <ul>
+            <li>1. We will investigate and contain it immediately</li>
+            <li>2. Notify you and the Information Regulator within 72 hours if your rights are at risk</li>
+            <li>3. Provide details of info affected and steps to protect yourself</li>
+            <li>4. Review security to prevent recurrence</li>
+        </ul>
+    </div>
+
+    <!-- 10. YOUR RIGHTS AS A DATA SUBJECT -->
+    <div class="clause">
+        <div class="clause-number">10. YOUR RIGHTS AS A DATA SUBJECT</div>
+        <p>Under POPIA you may:</p>
+        <ul>
+            <li><span class="highlight">Request access:</span> Ask what info we hold about you (Form 2). Free once per year</li>
+            <li><span class="highlight">Request correction/deletion:</span> Ask us to fix or delete info (Form 3). We must comply unless law says keep it</li>
+            <li><span class="highlight">Object to processing:</span> For marketing or legitimate interest (Form 1)</li>
+            <li><span class="highlight">Lodge complaint:</span> With us first: MountainView.acc@outlook.com Or with Information Regulator: complaints.IR@justice.gov.za</li>
+        </ul>
+        <p>We will respond within 30 days.</p>
+    </div>
+
+    <!-- 11. CROSS-BORDER TRANSFERS -->
+    <div class="clause">
+        <div class="clause-number">11. CROSS-BORDER TRANSFERS</div>
+        <p>Some software servers are outside SA, e.g. Xero, Google. We only use operators in countries with similar privacy laws or contractual safeguards. By using our service, you consent to this transfer.</p>
+    </div>
+
+    <!-- 12. CHANGES TO THIS POLICY -->
+    <div class="clause">
+        <div class="clause-number">12. CHANGES TO THIS POLICY</div>
+        <p>We may update this policy for legal or operational reasons. Latest version always on request. Material changes notified via email.</p>
+    </div>
+
+    <!-- 13. CONTACT US -->
+    <div class="clause">
+        <div class="clause-number">13. CONTACT US</div>
+        <p><span class="highlight">Information Officer:</span> Remolebogile Maseko</p>
+        <p><span class="highlight">Email:</span> MountainView.acc@outlook.com</p>
+        <p>For POPIA requests, use subject line: <span class="highlight">“POPIA REQUEST – [Your Name]”</span></p>
+    </div>
+</div>
+
+<footer>
+    <p>All rights reserved: MountainView Group 2026</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenuBtn');
+
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+    });
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    overlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
+
+</body>
+</html>
